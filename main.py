@@ -36,7 +36,10 @@ def continueAsk():
     
     continueRequest = input("Do you want to restart: y or n? ")
     if continueRequest == "y":
+        # Clear screen
         print(chr(27) + "[2J")
+
+        # Reset data
         isTrue = True
         score = 0
     else:
