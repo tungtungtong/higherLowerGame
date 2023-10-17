@@ -30,6 +30,18 @@ def randomCase():
     if compareCase1 == compareCase2:
         compareCase2 = random.choice(listData)
 
+def continueAsk():
+    global isTrue
+    global score
+    
+    continueRequest = input("Do you want to restart: y or n? ")
+    if continueRequest == "y":
+        print(chr(27) + "[2J")
+        isTrue = True
+        score = 0
+    else:
+        print("Game Over")
+
 # Clear Screen
 print(chr(27) + "[2J")
 
@@ -62,3 +74,4 @@ while isTrue:
         isTrue = False
         print(logo.logo)
         print(f"Sorry, that's wrong. Final score: {score}")
+        continueAsk()
