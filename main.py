@@ -5,30 +5,30 @@ import data
 listData = data.data
 isTrue = True
 score = 0
-compareCase1Int = 0
-compareCase2Int = 0
+compareCase1 = {}
+compareCase2 = {}
 
 # Function: print
 def questionPrint():
     print(logo.logo)
     if isTrue:
         print(f"Current score: {score}")
-    print(f"Compare A: {listData[compareCase1Int]['name']}, {listData[compareCase1Int]['description']}, from {listData[compareCase1Int]['country']}")
+    print(f"Compare A: {compareCase1['name']}, {compareCase1['description']}, from {compareCase1['country']}")
     print(logo.vs)
-    print(f"Compare B: {listData[compareCase2Int]['name']}, {listData[compareCase2Int]['description']}, from {listData[compareCase2Int]['country']}")
+    print(f"Compare B: {compareCase2['name']}, {compareCase2['description']}, from {compareCase2['country']}")
 
 # Function: Take random index
 def randomCase():
-    global compareCase1Int
-    global compareCase2Int
+    global compareCase1
+    global compareCase2
 
     # Take random Index
-    compareCase1Int = random.randint(0, len(listData)-1)
-    compareCase2Int = random.randint(0, len(listData)-1)
+    compareCase1 = random.choice(listData)
+    compareCase2 = random.choice(listData)
 
-    # Compare case Index
-    while compareCase1Int == compareCase2Int:
-        compareCase2Int = random.randint(0, len(listData))
+    # Check in Case 1 == Case 2
+    if compareCase1 == compareCase2:
+        compareCase2 = random.choice(listData)
 
 # Clear Screen
 print(chr(27) + "[2J")
@@ -45,8 +45,8 @@ while isTrue:
     compareResult = "A"
 
     # Take follower
-    followerA = int(listData[compareCase1Int]['follower_count'])
-    followerB = int(listData[compareCase2Int]['follower_count'])
+    followerA = int(compareCase1['follower_count'])
+    followerB = int(compareCase2['follower_count'])
 
     # Compare
     if followerA > followerB:
